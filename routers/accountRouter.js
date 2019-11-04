@@ -17,6 +17,7 @@ router.get('/:id', (req, res) => {
     .select('*')
     .from('accounts')
     .where({ id: req.params.id})
+    .first()
     .then(account => res.status(200).json(account))
     .catch(err => res.status(500).json({ error: 'Failed to get account' }))
 })
