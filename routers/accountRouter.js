@@ -12,6 +12,15 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json({ error: 'Failed to get accounts' }))
 })
 
+router.get('/:id', (req, res) => {
+    knex
+    .select('*')
+    .from('accounts')
+    .where({ id: req.params.id})
+    .then(account => res.status(200).json(account))
+    .catch(err => res.status(500).json({ error: 'Failed to get account' }))
+})
+
 router.post('/', validateAccount, (req, res) => {
     knex
     .insert(req.body, 'id')
