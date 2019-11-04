@@ -28,4 +28,12 @@ router.put('/:id', (req, res) => {
     .catch(err => res.status(500).json({ error: 'Failed to update account' }))
 })
 
+router.delete('/:id', (req, res) => {
+    knex('accounts')
+    .where({ id: req.params.id})
+    .del()
+    .then(deleted => res.status(200).json(deleted))
+    .catch(err => res.status(500).json({ error: 'Failed to delete account' }))
+})
+
 module.exports = router;
