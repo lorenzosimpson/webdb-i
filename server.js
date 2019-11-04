@@ -4,9 +4,11 @@ const cors = require('cors')
 
 const server = express();
 
+
+server.use(cors());
 server.use(express.json());
 server.use('/api/accounts', accountRouter);
-server.use(cors());
+
 
 
 module.exports = server;
