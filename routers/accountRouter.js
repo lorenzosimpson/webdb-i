@@ -36,4 +36,6 @@ router.delete('/:id', (req, res) => {
     .catch(err => res.status(500).json({ error: 'Failed to delete account' }))
 })
 
+// woo mvp complete
+
 module.exports = router;
